@@ -23,17 +23,16 @@ export class HeroService {
 
     /* API */
     /** GET heroes from the server */
-    return this.http
-      .get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(_=> this.log('Fatched Heroes'))
-        ,catchError(this.handleError<Hero[]>('getHeroes', [])));
+    return this.http.get<Hero[]>(this.heroesUrl).pipe(
+      tap((_) => this.log('Fatched Heroes')),
+      catchError(this.handleError<Hero[]>('getHeroes', []))
+    );
   }
 
-  private handleError<T>(operation = 'operation', result?: T){
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrstrukture
-      console.error(error) // log to console instead
+      console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
@@ -43,15 +42,24 @@ export class HeroService {
     };
   }
 
+  // getHero(id: number): Observable<Hero> {
+  //   // for now, assume that a hero with the specified id always exists
+  //   // error handling will be added in the next step of the tutorial
+  //   const hero = HEROES.find((h) => h.id === id)!;
+  //   this.messageService.add(`HeroService: fetched hero id=${id}`);
+  //   return of(hero);
+  // }
+
+  /** GET hero by id. Will 404 if id not found */
   getHero(id: number): Observable<Hero> {
-    // for now, assume that a hero with the specified id always exists
-    // error handling will be added in the next step of the tutorial
-    const hero = HEROES.find((h) => h.id === id)!;
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(hero);
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap((_) => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
   }
 
-  /** Log a HeroService message with the MessageService */
+  /* Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
