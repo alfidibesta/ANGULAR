@@ -11,3 +11,34 @@
     </tr>
   </tbody>
 </table>
+
+<h2>{{ binding }}</h2>
+<!-- <h2 [textContent]="binding"></h2> -->
+<!-- <img src="{{ imageUrl }}" alt="" /> -->
+<!-- <img [src]="imageUrl" alt=""> -->
+<table>
+  <tr>
+    <td [attr.colSpan]="colSpan"></td>
+  </tr>
+</table>
+<button type="button" class="btn btn-primary active">tambah</button>
+
+<button
+  type="button"
+  class="btn btn-primary"
+  [style.backgorundColor]="isActive ? 'blue' : 'white'"
+>
+  Style
+</button>
+<!-- <button type="button" class="btn btn-primary" (click)="onSave($event)">button</button>
+    <button type="button" class="btn btn-primary" (click)="onDivClick($event)">divClick</button> -->
+
+<div (click)="onDivClick($event)">
+  <button type="button" class="btn btn-danger" (click)="onSave($event)">
+    button
+  </button>
+</div>
+
+<!-- <input type="text"[value]="nama" (keyup.enter)="nama = ($any($event).target.value);onKeyUp()"> -->
+
+<input type="text" [(ngModel)]="nama" (keyup.enter)="onKeyUp()">
