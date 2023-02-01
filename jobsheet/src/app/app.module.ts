@@ -7,17 +7,25 @@ import { CoursesComponent } from './courses/courses.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CoursesService } from './courses.service';
+import { ServerComponent } from './server/server.component';
+import { ServersComponent } from './servers/servers.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CoursesComponent
+    CoursesComponent,
+    ServerComponent,
+    ServersComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
