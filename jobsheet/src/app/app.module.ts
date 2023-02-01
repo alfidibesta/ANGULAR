@@ -11,6 +11,10 @@ import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HiddenPropertyComponent } from './hidden-property/hidden-property.component';
+import { SwitchCaseComponent } from './switch-case/switch-case.component';
+import { NgforComponent } from './ngfor/ngfor.component';
+import { InputFormatsDirective } from './input-formats.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CoursesComponent,
     ServerComponent,
     ServersComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    HiddenPropertyComponent,
+    SwitchCaseComponent,
+    NgforComponent,
+    InputFormatsDirective
   ],
   imports: [
     BrowserModule,

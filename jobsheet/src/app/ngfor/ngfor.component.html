@@ -1,0 +1,70 @@
+<div>
+  <p>v1</p>
+  <ul>
+    <li *ngFor="let course of course; index as i">
+      {{ i }} - {{ course.name }}
+    </li>
+  </ul>
+</div>
+
+<div>
+  <p>v2</p>
+  <ul>
+    <li *ngFor="let course of course; even as isEven">
+      {{ course.name }} <span *ngIf="isEven">(EVEN)</span>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <p>v3</p>
+  <button (click)="onAdd()">Add</button>
+  <ul>
+    <li *ngFor="let course of course">
+      {{ course.name }}
+    </li>
+  </ul>
+</div>
+
+<div>
+  <p>v4</p>
+  <button (click)="onAdd()">Add</button>
+  <ul>
+    <li *ngFor="let course of course">
+      {{ course.name }}
+      <button (click)="onRemove(course)">Remove</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <p>v5</p>
+  <button (click)="onAdd()">Add</button>
+  <ul>
+    <li *ngFor="let course of course">
+      {{ course.name }}
+      <button (click)="onRemove(course)">Remove</button>
+      <button (click)="onChange(course)">Update</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <p>v5</p>
+  <!-- <button (click)="loadCourses()">Load Courses</button>
+  <ul>
+    <li *ngFor="let course of courses">
+      {{ course.name }}
+    </li>
+  </ul> -->
+</div>
+
+<div>
+    <p>v6</p>
+    <button (click)="loadCourses()">Load Courses</button>
+    <ul>
+      <li *ngFor="let course of courses; trackBy: trackCourse">
+        {{ course.name }}
+      </li>
+    </ul>
+  </div>
