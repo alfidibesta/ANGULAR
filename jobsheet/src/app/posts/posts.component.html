@@ -1,12 +1,12 @@
 <div class="container">
-  <input type="text" (keyup.enter)="createPost($event)" class="form-control" />
   <p>GET DATA</p>
+  <input type="text" (keyup.enter)="createPost($event)" class="form-control mb-2" />
   <ul class="list-group">
     <li *ngFor="let post of posts" class="list-group-item;">
-      <button class="btn btn-sm btn-primary" (click)="updatePost(post)">
+      <button class="btn btn-sm btn-primary ms-2 mb-2" (click)="updatePost(post)">
         Update
       </button>
-      <button class="btn btn-sm btn-danger" (click)="deletePost(post)">
+      <button class="btn btn-sm btn-danger ms-2 mb-2" (click)="deletePost(post)">
         Delete
       </button>
       {{ post.title }}
