@@ -1,43 +1,131 @@
-<div class="container" style="background-color: rgb(245, 245, 245)">
-  <h1 style="text-align: center">Displaying and Binding data</h1>
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>ini adalah component</h3>
-      <hr />
-      <app-server></app-server>
-      <hr />
-      <app-servers></app-servers>
-      <div class="app-server"></div>
-      <!-- <favorite [isFavorite]="post.isFavorite" (change)="onfavoriteChange()"></favorite> -->
+<div class="container">
+  <div class="col-md-12">
+    <h4>
+      Materi -
+      <span>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="collapseH.toggle()"
+          [attr.aria-expanded]="!isCollapsedH"
+          aria-controls="collapseH"
+          style="content: center"
+        >
+          HTTP
+        </button>
+      </span>
+    </h4>
+  </div>
+</div>
+<div #collapseH="ngbCollapse" [(ngbCollapse)]="isCollapsedH">
+  <div class="container">
+    <div class="card" style="background-color: rgb(241, 241, 241)">
+      <div class="card-body">
+        <app-posts></app-posts>
+      </div>
     </div>
   </div>
 </div>
 <hr />
-<router-outlet></router-outlet>
-
-<div class="container" style="background-color: rgb(241, 241, 241)">
-  <div>
-    <h1 style="text-align: center"><b>Directives</b></h1>
-    <hr />
-    <h2><b>Directives -</b> Ngif = iterasi variable</h2>
-    <div *ngIf="courses.length > 0; else noCourses">aaa</div>
-    <ng-template #coursesList> List of courses</ng-template>
-    <ng-template #noCourses> No courses yet</ng-template>
-  </div>
-  <div>
-    <hr />
-    <h2><b>Directives -</b>Hidden Prperty</h2>
-    <app-hidden-property></app-hidden-property>
-  </div>
-  <div>
-    <hr />
-    <h2><b>Directives -</b> ngSwitchCase</h2>
-    <app-switch-case></app-switch-case>
-  </div>
-  <div>
-    <hr>
-    <h2><b>Directives -</b> ngFor</h2>
-    <app-ngfor></app-ngfor>
-    <input type="text" appInputFormats [format]="'lowercase'">
+<br />
+<div class="container">
+  <div class="col-md-12">
+    <h4>
+      Materi -
+      <span>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="collapseDbd.toggle()"
+          [attr.aria-expanded]="!isCollapsedDbd"
+          aria-controls="collapseDbd"
+          style="content: center"
+        >
+          Displaying and Binding data
+        </button>
+      </span>
+    </h4>
   </div>
 </div>
+<br />
+<div #collapseDbd="ngbCollapse" [(ngbCollapse)]="isCollapsedDbd">
+  <div class="container">
+    <div class="card" style="background-color: rgb(241, 241, 241)">
+      <div class="card-body">
+        <div class="col-md-12">
+          <div class="container" style="background-color: rgb(245, 245, 245)">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>ini adalah component</h3>
+                <hr />
+                <app-server></app-server>
+                <hr />
+                <app-servers></app-servers>
+                <div class="app-server"></div>
+                <!-- <favorite [isFavorite]="post.isFavorite" (change)="onfavoriteChange()"></favorite> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+
+<router-outlet></router-outlet>
+
+<div class="container">
+  <div class="col-md-12">
+    <h4>
+      Materi -
+      <span>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="collapseD.toggle()"
+          [attr.aria-expanded]="!isCollapsedD"
+          aria-controls="collapseD"
+          style="content: center"
+        >
+          Directives
+        </button>
+      </span>
+    </h4>
+  </div>
+</div>
+<br />
+<div #collapseD="ngbCollapse" [(ngbCollapse)]="isCollapsedD">
+  <div class="container">
+    <div class="card" style="background-color: rgb(241, 241, 241)">
+      <div class="card-body">
+        <div class="col-md-12">
+          <div>
+            <h2><b>Directives -</b> Ngif = iterasi variable</h2>
+            <div *ngIf="courses.length > 0; else noCourses">aaa</div>
+            <ng-template #coursesList> List of courses</ng-template>
+            <ng-template #noCourses> No courses yet</ng-template>
+          </div>
+          <div>
+            <hr />
+            <h2><b>Directives -</b>Hidden Prperty</h2>
+            <app-hidden-property></app-hidden-property>
+          </div>
+          <div>
+            <hr />
+            <h2><b>Directives -</b> ngSwitchCase</h2>
+            <app-switch-case></app-switch-case>
+          </div>
+          <div>
+            <hr />
+            <h2><b>Directives -</b> ngFor</h2>
+            <app-ngfor></app-ngfor>
+            <p>check inspect console</p>
+            <input type="text" appInputFormats [format]="'lowercase'" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />

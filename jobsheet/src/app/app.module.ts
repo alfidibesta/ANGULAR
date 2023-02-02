@@ -15,6 +15,8 @@ import { HiddenPropertyComponent } from './hidden-property/hidden-property.compo
 import { SwitchCaseComponent } from './switch-case/switch-case.component';
 import { NgforComponent } from './ngfor/ngfor.component';
 import { InputFormatsDirective } from './input-formats.directive';
+import { PostsComponent } from './posts/posts.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,14 +28,16 @@ import { InputFormatsDirective } from './input-formats.directive';
     HiddenPropertyComponent,
     SwitchCaseComponent,
     NgforComponent,
-    InputFormatsDirective
+    InputFormatsDirective,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
