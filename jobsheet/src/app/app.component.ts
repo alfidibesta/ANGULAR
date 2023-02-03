@@ -11,4 +11,5 @@ export class AppComponent {
   public isCollapsedD = true;
   public isCollapsedDbd = true;
   public isCollapsedH = true;
+  public isCollapsedR = true;
 }

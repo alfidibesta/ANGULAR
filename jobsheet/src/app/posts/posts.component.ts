@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-posts',
@@ -12,25 +13,26 @@ export class PostsComponent {
   private url = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) {
-    this.http
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .subscribe((response: any) => {
-        this.posts = response;
-      });
+    http.get(this.url).subscribe((response: any) => {
+      this.posts = response;
+    });
   }
 
-  createPost(event: any) {
-    let post = event.target.value;
-    event.target.value = '';
+  createPost(input: HTMLInputElement) {
+    // let post = event.target.value;
+    // event.target.value = '';
+    let post: Post = { title: input.value };
+    input.value = '';
 
     this.http
       .post(this.url, JSON.stringify(post))
       .subscribe((response: any) => {
-        post['id'] = response.id;
+        post.id = response.id;
         this.posts.splice(0, 0, post);
         console.log(response);
       });
   }
+
   updatePost(post: any) {
     this.http
       .patch(this.url + '/' + post.id, JSON.stringify({ isRead: true }))
@@ -39,9 +41,8 @@ export class PostsComponent {
         console.log(response);
       });
   }
-  deletePost(post: any){
-    this.http.delete(this.url + '/' + post.id)
-    .subscribe((response:any) => {
+  deletePost(post: any) {
+    this.http.delete(this.url + '/' + post.id).subscribe((response: any) => {
       let index = this.posts.indexOf(post);
       this.posts.splice(index, 1);
     });

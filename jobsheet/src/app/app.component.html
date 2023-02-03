@@ -7,6 +7,37 @@
         <button
           type="button"
           class="btn btn-primary btn-sm"
+          (click)="collapseR.toggle()"
+          [attr.aria-expanded]="!isCollapsedR"
+          aria-controls="collapseR"
+          style="content: center"
+        >
+          Route
+        </button>
+      </span>
+    </h4>
+  </div>
+</div>
+<div #collapseR="ngbCollapse" [(ngbCollapse)]="isCollapsedR">
+  <div class="container">
+    <div class="card" style="background-color: rgb(241, 241, 241)">
+      <div class="card-body">
+        <app-navbar></app-navbar>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<!-- start.http -->
+<div class="container mb-2">
+  <div class="col-md-12">
+    <h4>
+      Materi -
+      <span>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
           (click)="collapseH.toggle()"
           [attr.aria-expanded]="!isCollapsedH"
           aria-controls="collapseH"
@@ -72,9 +103,6 @@
   </div>
 </div>
 <hr />
-
-<router-outlet></router-outlet>
-
 <!-- start.directive -->
 <div class="container mb-2">
   <div class="col-md-12">
@@ -128,4 +156,4 @@
     </div>
   </div>
 </div>
-<br>
+<br />

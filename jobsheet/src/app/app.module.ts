@@ -17,6 +17,13 @@ import { NgforComponent } from './ngfor/ngfor.component';
 import { InputFormatsDirective } from './input-formats.directive';
 import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PostRouteComponent } from './post-route/post-route.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormMemberComponent } from './form-member/form-member.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
     NgforComponent,
     InputFormatsDirective,
     PostsComponent,
+    HomeComponent,
+    NotFoundComponent,
+    PostRouteComponent,
+    NavbarComponent,
+    FormMemberComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +50,16 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    // js routing
+    RouterModule.forRoot([
+      {path: '', component:HomeComponent},
+      {path: 'form', component:FormMemberComponent},
+      {path: 'form', component:FormMemberComponent},
+      {path: 'post', component:PostRouteComponent},
+      {path: 'profile/:id', component:ProfileComponent},
+      {path: '**', component:NotFoundComponent}
+  ])
   ],
   providers: [CoursesService],
   bootstrap: [AppComponent]
