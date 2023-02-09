@@ -12,6 +12,7 @@ export class TutorialsListComponent implements OnInit {
   currentTutorial: Tutorial = {};
   currentIndex = -1;
   title = '';
+  description = '';
 
   constructor(private tutorialService: TutorialService) {}
 
@@ -54,7 +55,7 @@ export class TutorialsListComponent implements OnInit {
     this.currentTutorial = {};
     this.currentIndex = -1;
 
-    this.tutorialService.findByTitle(this.title).subscribe({
+    this.tutorialService.findByTitle(this.title, this.description).subscribe({
       next: (data) => {
         this.tutorials = data;
         console.log(data);

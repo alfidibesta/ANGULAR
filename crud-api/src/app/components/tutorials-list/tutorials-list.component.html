@@ -6,6 +6,7 @@
         class="form-control"
         placeholder="Search by title"
         [(ngModel)]="title"
+        [(ngModel)]="description"
       />
       <div class="input-group-append">
         <button
@@ -27,7 +28,7 @@
         [class.active]="i == currentIndex"
         (click)="setActiveTutorial(tutorial, i)"
       >
-        {{ tutorial.title }}
+        {{ tutorial.title | uppercase}}
       </li>
     </ul>
 
