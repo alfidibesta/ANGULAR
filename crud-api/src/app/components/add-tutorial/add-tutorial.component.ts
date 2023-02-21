@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-// import Validation from './utils/validation';
 
 @Component({
   selector: 'app-add-tutorial',
@@ -16,60 +8,39 @@ import {
   styleUrls: ['./add-tutorial.component.css'],
 })
 export class AddTutorialComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    published: new FormControl(false),
-  });
+  tutorial: Tutorial = {
+    title: '',
+    description: '',
+    published: false,
+  };
   submitted = false;
-  // tutorial: Tutorial = {
-  //   title: '',
-  //   description: '',
-  //   published: false,
-  // };
-  // submitted = false;
 
-  constructor(
-    private tutorialService: TutorialService,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private tutorialService: TutorialService) {}
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      published: [false, Validators.required],
-    });
-  }
-
-  get f(): {[key: string]: AbstractControl}{
-    return this.form.controls;
-  }
+  ngOnInit(): void {}
 
   saveTutorial(): void {
-    this.submitted = true;
-
-    if (this.form.invalid){
-      return;
-    }
-    console.log(JSON.stringify(this.form.value, null, 2));
-
     const data = {
-      title: this.f['title'].value,
-      description: this.f['description'].value,
+      title: this.tutorial.title,
+      describtion: this.tutorial.description
     };
 
-    this.tutorialService.create(data).subscribe({
+    this.tutorialService.create(data)
+    .subscribe({
       next: (res) => {
         console.log(res);
         this.submitted = true;
       },
-      error: (e) => console.error(e),
+      error: (e) => console.error(e)
     });
   }
-  
-  newTutorial(): void {
+  newTutorial():void {
     this.submitted = false;
-    this.form.reset();
+    this.tutorial = {
+      title: '',
+      description: '',
+      published: false
+
+    }
   }
 }
